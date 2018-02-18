@@ -66,7 +66,8 @@ def main():
         plt.xlim(testfunction.x_range)
         plt.ylim(testfunction.y_range)
 
-    anim = anm.FuncAnimation(plt.figure(), plot, interval=1, frames=FRAMES)
+    anim = anm.FuncAnimation(plt.figure(), plot,
+                             interval=1, frames=FRAMES, init_func=lambda: None)
     #anim.save("Sample.mp4", writer=anm.FFMpegFileWriter(fps=120))
     plt.show()
 
