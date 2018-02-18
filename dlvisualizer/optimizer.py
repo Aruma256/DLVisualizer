@@ -8,18 +8,19 @@ from keras.optimizers import *
 
 from test_functions import *
 
+SETTINGS = {'lr': 0.1}
 TESTFUNCTION = Beale
 FRAMES = 2000
-FRAME_SKIP = 10
+FRAME_SKIP = 1
 OPTIMIZERS = [
-    ('SGD', SGD()),
-    ('MomentumSGD', SGD(momentum=0.99)),
-    ('Adagrad', Adagrad()),
-    ('Adadelta', Adadelta()),
-    ('RMSprop', RMSprop()),
-    ('Adam', Adam()),
-    ('Adamax', Adamax()),
-    ('Nadam', Nadam()),
+    ('SGD', SGD(lr=0.005)),
+    ('MomentumSGD', SGD(lr=0.005, momentum=0.95)),
+    ('Adagrad', Adagrad(**SETTINGS)),
+    ('Adadelta', Adadelta(**SETTINGS)),
+    ('RMSprop', RMSprop(**SETTINGS)),
+    ('Adam', Adam(**SETTINGS)),
+    ('Adamax', Adamax(**SETTINGS)),
+    ('Nadam', Nadam(**SETTINGS)),
 ]
 
 

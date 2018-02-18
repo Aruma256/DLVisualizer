@@ -21,7 +21,7 @@ class TestFunction:
 
 Beale = TestFunction(
     lambda x, y: (1.5 - x + x * y)**2 + (2.25 - x + x * y**2)**2 + (2.625 - x + x * y**3)**2,
-    init_pos=(1.5, 1.2),
+    init_pos=(0.8, 1.5),
     minimum_pos=(3, 0.5),
     x_range=(-4.5, 4.5),
     y_range=(-4.5, 4.5),
