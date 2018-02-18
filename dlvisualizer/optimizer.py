@@ -43,7 +43,7 @@ def main():
     FAKE_OUTPUT = np.zeros((1, 2))
     models = get_models()
     testfunction = TESTFUNCTION
-    trajectories = np.zeros((len(models), 2, FRAMES), dtype='float32')
+    trajectories = [([], []) for _ in range(len(models))]
 
     def plot(step, *args, **kwargs):
         plt.cla()
@@ -52,12 +52,12 @@ def main():
                     levels=testfunction.contour_levels)
         for i, model in enumerate(models):
             x, y = model.layers[1].get_weights()[0][0]
-            trajectories[i,0,step] = x
-            trajectories[i,1,step] = y
+            trajectories[i][0].append(x)
+            trajectories[i][1].append(y)
             for _ in range(FRAME_SKIP):
                 model.train_on_batch(FAKE_INPUT, FAKE_OUTPUT)
-            plt.plot(trajectories[i,0,:step + 1],
-                     trajectories[i,1,:step + 1],
+            plt.plot(trajectories[i][0],
+                     trajectories[i][1],
                      '-o',
                      label=model.name, markevery=[-1])
         plt.plot(*testfunction.minimum_pos, 'o', label='Minimum')
