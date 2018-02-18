@@ -68,7 +68,7 @@ def main():
 
     anim = anm.FuncAnimation(plt.figure(), plot,
                              interval=1, frames=FRAMES, init_func=lambda: None)
-    #anim.save("Sample.mp4", writer=anm.FFMpegFileWriter(fps=120))
+    #anim.save("Sample.mp4", writer=anm.FFMpegWriter(fps=60))
     plt.show()
 
 
